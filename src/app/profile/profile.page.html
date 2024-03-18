@@ -5,20 +5,17 @@
 
   <div class="frame">
     <div class="center">
-      
       <div class="profile">
         <div class="image">
           <div class="circle-1"></div>
           <div class="circle-2"></div>
           <ion-icon name="person-circle-outline" class="equal-size"></ion-icon>
         </div>
-        
-        <div class="name">Dr Vikash Jagoo</div>
-        <div class="job">ICT HOD</div>
-        
+        <div class="name">{{ currentUser.fullName }}</div>
+        <div class="job">{{ currentUser.position }}</div>
         <div class="actions">
-          <button class="btn">ADD CLASSES</button>
-          <button class="btn">EDIT PROFILE</button>
+          <button class="btn" routerLink="/lecture">ADD CLASSES</button>
+          <button class="btn" routerLink="/attendies">Track Attendance</button>
         </div>
       </div>
       
@@ -28,11 +25,11 @@
           <span class="parameter">Students</span>
         </div>
         <div class="box">
-          <span class="value">3</span>
+          <span class="value">{{ moduleCount }}</span>
           <span class="parameter">Modules</span>
         </div>
         <div class="box">
-          <span class="value">90%</span>
+          <span class="value">{{ totalAttendance.toFixed(2) }}%</span>
           <span class="parameter">Attendance</span>
         </div>
       </div>

@@ -10,17 +10,14 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
   {
     path: 'attendies',
     loadChildren: () => import('./attendies/attendies.module').then( m => m.AttendiesPageModule)
-  },
-  {
-    path: 'classes',
-    loadChildren: () => import('./classes/classes.module').then( m => m.ClassesPageModule)
   },
   {
     path: 'lecture',

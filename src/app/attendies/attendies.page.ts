@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-attendies',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./attendies.page.scss'],
 })
 export class AttendiesPage implements OnInit {
+  attendanceDetails: any[] = [];
 
-  constructor() { }
+  constructor(private firestore: AngularFirestore) {}
 
   ngOnInit() {
+    this.fetchAttendanceDetails();
   }
 
+  fetchAttendanceDetails() {
+    this.firestore.collection('registerAttendies').valueChanges().subscribe((data: any[]) => {
+      this.attendanceDetails = data;
+    });
+  }
 }
