@@ -8,7 +8,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  currentUser: any;
+  currentUser: any = {};
   moduleCount: number = 0;
   totalAttendance: number = 0;
 
@@ -35,6 +35,8 @@ export class ProfilePage implements OnInit {
               this.currentUser = doc.data();
               this.getModuleCount(doc.id);
             });
+          }, (error) => {
+            console.error('Error fetching user data:', error);
           });
       } else {
         // No user is signed in.
@@ -49,6 +51,8 @@ export class ProfilePage implements OnInit {
       .subscribe((querySnapshot) => {
         this.moduleCount = querySnapshot.size;
         this.getTotalAttendance(querySnapshot);
+      }, (error) => {
+        console.error('Error fetching module count:', error);
       });
   }
 
@@ -56,7 +60,7 @@ export class ProfilePage implements OnInit {
     let totalStudents = 0;
     let attendedStudents = 0;
 
-    querySnapshot.forEach((doc: any) => { // Explicitly specify type for 'doc'
+    querySnapshot.forEach((doc: any) => {
       totalStudents += doc.data().totalStudents;
       attendedStudents += doc.data().attendedStudents;
     });

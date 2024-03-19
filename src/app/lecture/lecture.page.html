@@ -55,9 +55,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of tableData">
-          <td>{{ data.moduleCode }}</td>
-          <td (click)="gotoQRscan(data.moduleCode)">View</td>
+        <tr *ngFor="let module of tableData">
+          <td>{{ module.moduleCode }}</td>
+          <td (click)="gotoQRscan(module.moduleCode)">View</td>
         </tr>
       </tbody>
     </table>
